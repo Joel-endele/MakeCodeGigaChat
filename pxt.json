@@ -1,0 +1,28 @@
+{
+    "name": "chati #2",
+    "description": "",
+    "dependencies": {
+        "core": "*",
+        "Dust-Sensor": "github:calliope-edu/pxt-HM3301_Dust_Sensor#11fae1f9a71b85988d6525d859f26eaf90dd0799",
+        "radio-broadcast": "*",
+        "Sunlightsensor-SI1145": "github:calliope-edu/pxt-sunlightsensor-si1145#bad5c8770fa190d7dc5a85844f35b7ea6ef4a986",
+        "radio": "*",
+        "pxt-callicross": "github:MKleinSB/pxt-callicross#v1.2.1"
+    },
+    "files": [
+        "main.blocks",
+        "main.ts",
+        "README.md"
+    ],
+    "testFiles": [
+        "test.ts"
+    ],
+    "targetVersions": {
+        "target": "4.0.29",
+        "targetId": "calliopemini"
+    },
+    "supportedTargets": [
+        "calliopemini"
+    ],
+    "preferredEditor": "blocksprj"
+}
