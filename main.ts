@@ -22,6 +22,9 @@ radio.onReceivedNumber(function (receivedNumber) {
         basic.clearScreen()
     }
 })
+input.onPinTouchEvent(TouchPin.P3, ButtonEvent.LongClick, function () {
+    Tfe = 1
+})
 input.onButtonEvent(Button.B, ButtonEvent.LongClick, function () {
     basic.setLedColor(0x65471f)
     if (Satz == "") {
@@ -102,6 +105,43 @@ radio.onReceivedString(function (receivedString) {
     basic.showString(receivedString)
     basic.setLedColor(0xff0000)
 })
+input.onPinTouchEvent(TouchPin.P0, ButtonEvent.LongClick, function () {
+    Efv = 0
+    Rew = 1
+    Tfe = 0
+    while (Tfe == 0) {
+        basic.setLedColor(basic.rgb(Red, Green, Blue))
+        basic.pause(10)
+        Red += Rew
+        if (Red == 255) {
+            Rew = 0
+            Vjf = -1
+            if (Blue == 0) {
+                Vjf = 0
+                Rew = 0
+                Efv = 1
+                Green += Efv
+                if (Green == 255) {
+                    Efv = 0
+                    Rew = -1
+                }
+            }
+        }
+        if (Rew == -1 && Red == 0) {
+            Rew = 0
+            Vjf = 1
+        }
+        Blue += Vjf
+        if (Blue == 255) {
+            Vjf = 0
+            Efv = -1
+            Green += Efv
+        }
+        if (Blue == 255 && Green == 0) {
+            Rew = 1
+        }
+    }
+})
 function Reset () {
     Wort = ""
     Buchstabenaufruf = -1
@@ -137,8 +177,15 @@ function Reset () {
     basic.setLedColor(0x0000ff)
     music.playMelody("E F G A - - - - ", 190)
 }
+let Vjf = 0
+let Blue = 0
+let Green = 0
+let Red = 0
+let Rew = 0
+let Efv = 0
 let text_list: string[] = []
 let Funkauswahl = 0
+let Tfe = 0
 let Buchstabenaufruf = 0
 let Wort = ""
 let Satz = ""
